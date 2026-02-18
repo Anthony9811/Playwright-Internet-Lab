@@ -28,16 +28,16 @@ The project follows a clean separation of concerns:
 * **Trace Viewer**: Detailed post-execution analysis for debugging.
 
 # 🚦 Getting Started
-## Prerequisites
+### Prerequisites
 * Node.js (v18 or higher)
 * NPM (comes with Node)
 
-## Installation
+### Installation
 1. Clone the repository: `git clone https://github.com/Anthony9811/Playwright-Internet-Lab.git`
 2. Install dependencies: `npm install`
 3. Install Playwright Browsers: `npx playwright install`
 
-## Running Tests (NOT AVAILABLE YET)
+### Running Tests (NOT AVAILABLE YET)
 * Run all tests: `npx playwright test`
 * Run in UI Mode (Interactive): `npx playwright test --ui`
 * Generate Report: `npx playwright show-report`
