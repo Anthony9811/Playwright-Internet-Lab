@@ -37,7 +37,7 @@ The project follows a clean separation of concerns:
 2. Install dependencies: `npm install`
 3. Install Playwright Browsers: `npx playwright install`
 
-### Running Tests (NOT AVAILABLE YET)
+### Running Tests
 * Run all tests: `npx playwright test`
 * Run in UI Mode (Interactive): `npx playwright test --ui`
 * Generate Report: `npx playwright show-report`
@@ -45,3 +45,12 @@ The project follows a clean separation of concerns:
 # 📝 Evolution Notes
 ### Why the switch from Selenium?
 While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom-practice) focused on traditional WebDriver protocols, this project explores the benefits of the Playwright library, such as its auto-waiting mechanism, shadow DOM support, and the robust Trace Viewer for faster debugging.
+
+# 🧠 Key Concepts & Exercises
+**Exercise 1: Basic Login Test (Form Authentication)**
+
+**Objective**: Automate the login process for the "The Internet" sample website.
+
+**Concepts**: `page.locator`, `click`, `fill`, and **Asynchronous Web-First Assertions**.
+
+**Transition Notes**: In Exercise 1, I replaced the Selenium `findElement` and `sendKeys` approach with Playwright’s `locator` and `fill`. Unlike my Selenium implementation, this version uses **Auto-waiting**, removing the need for manual `WebDriverWait` or `ExpectedConditions` for the login flash message.
