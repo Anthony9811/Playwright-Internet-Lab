@@ -10,7 +10,7 @@ for (const option of dropdownOptions) {
     const homePage = new HomePage(page);
 
     await homePage.open();
-    await dropdownPage.navigateTo("/dropdown");
+    await homePage.clickOnDropdown();
     await dropdownPage.selectOption(option);
 
     //Is the current option 'Option 1'? If yes value is 1, otherwise is 2

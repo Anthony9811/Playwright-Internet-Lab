@@ -1,11 +1,9 @@
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from './BasePage';
 
-export class DropdownPage extends BasePage {
+export class DropdownPage {
   readonly dropdownElement: Locator;
 
   constructor(page: Page) {
-    super(page);
     this.dropdownElement = page.locator("#dropdown");
   }
 

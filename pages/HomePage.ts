@@ -1,14 +1,13 @@
 import { Locator, Page } from "@playwright/test";
-import { BasePage } from "./BasePage";
 
-
-export class HomePage extends BasePage {
+export class HomePage{
+   private readonly page;
    private readonly formAuthenticationLink: Locator;
    private readonly dropdownLink: Locator;
    private readonly forgotPasswordLink: Locator;
 
   constructor(page: Page) {
-    super(page);
+    this.page = page;
     this.formAuthenticationLink = page.getByText("Form Authentication");
     this.dropdownLink = page.getByText("Dropdown");
     this.forgotPasswordLink = page.getByText("Forgot Password");
@@ -27,6 +26,6 @@ export class HomePage extends BasePage {
   }
 
   async open() {
-    await this.navigateTo('/');
+    await this.page.goto('/');
   }
 }

@@ -1,14 +1,12 @@
 import { Page, Locator } from "@playwright/test";
-import { BasePage } from "./BasePage";
 
-export class FormAuthenticationPage extends BasePage {
+export class FormAuthenticationPage{
   private readonly userNameInput: Locator;
   private readonly passwordInput: Locator;
   private readonly loginButton: Locator;
   readonly successfulLoginMessage: Locator;
 
   constructor(page: Page) {
-    super(page);
     this.userNameInput = page.locator("#username");
     this.passwordInput = page.locator("#password");
     this.loginButton = page.locator(".radius");

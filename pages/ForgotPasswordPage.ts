@@ -1,12 +1,10 @@
 import { Locator, Page } from "@playwright/test";
-import { BasePage } from "./BasePage";
 
-export class ForgotPasswordPage extends BasePage{
+export class ForgotPasswordPage{
   private readonly emailInput: Locator;
   private readonly submitButton: Locator;
 
   constructor(page:Page) {
-    super(page);
     this.emailInput = page.locator("#email");
     this.submitButton = page.locator("#form_submit");
   }
