@@ -60,3 +60,12 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 **Objective**: Automate a dropdown menu to select options using a parameterized data approach.
 
 **Concepts**: `selectOption`, `expect().toHaveValue()`, and **Array-based test loops**.
+
+**Exercise 3: Forgot Password Workflow**
+
+**Objective**: Validate the "Forgot Password" functionality by submitting an email and verifying the resulting message.
+
+**Concepts**: Element interaction, text validation, and handling a basic user flow.
+
+#### **Note ⚠️**: This test cannot be successfully completed as intended at the moment due to an "Internal Server Error" appearing on the site after submission. Following the original requirements, the application should redirect to a confirmation page displaying "Your e-mail's been sent!".
+#### In this Playwright implementation, I have also opted to validate the presence of the "Internal Server Error" message. This approach avoids a test timeout (Playwright's equivalent of a `NoSuchElementException`) and serves as a monitoring tool: the test will "fail" once the developers fix the site, alerting me to update the assertion to the correct success message.
