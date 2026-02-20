@@ -54,3 +54,9 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 **Concepts**: `page.locator`, `click`, `fill`, and **Asynchronous Web-First Assertions**.
 
 **Transition Notes**: In Exercise 1, I replaced the Selenium `findElement` and `sendKeys` approach with Playwright’s `locator` and `fill`. Unlike my Selenium implementation, this version uses **Auto-waiting**, removing the need for manual `WebDriverWait` or `ExpectedConditions` for the login flash message.
+
+**Exercise 2: Data-Driven Dropdown Selection**
+
+**Objective**: Automate a dropdown menu to select options using a parameterized data approach.
+
+**Concepts**: `selectOption`, `expect().toHaveValue()`, and **Array-based test loops**.
