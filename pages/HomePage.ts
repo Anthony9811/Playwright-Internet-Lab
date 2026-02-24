@@ -5,12 +5,14 @@ export class HomePage{
    private readonly formAuthenticationLink: Locator;
    private readonly dropdownLink: Locator;
    private readonly forgotPasswordLink: Locator;
+   private readonly hoversLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.formAuthenticationLink = page.getByText("Form Authentication");
     this.dropdownLink = page.getByText("Dropdown");
     this.forgotPasswordLink = page.getByText("Forgot Password");
+    this.hoversLink = page.getByText("Hovers");
   }
 
   async clickOnFormAuthentication() {
@@ -23,6 +25,10 @@ export class HomePage{
 
   async clickOnForgotPassword() {
     await this.forgotPasswordLink.click();
+  }
+
+  async clickOnHovers() {
+    await this.hoversLink.click();
   }
 
   async open() {

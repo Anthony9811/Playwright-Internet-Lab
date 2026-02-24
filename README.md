@@ -69,3 +69,18 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 
 #### **⚠️ Note**: This test cannot be successfully completed as intended at the moment due to an "Internal Server Error" appearing on the site after submission. Following the original requirements, the application should redirect to a confirmation page displaying "Your e-mail's been sent!".
 #### In this Playwright implementation, I have also opted to validate the presence of the "Internal Server Error" message. This approach avoids a test timeout (Playwright's equivalent of a `NoSuchElementException`) and serves as a monitoring tool: the test will "fail" once the developers fix the site, alerting me to update the assertion to the correct success message.
+
+**Exercise 4: Hover Interactions**
+
+**Objective**: Reveal and validate hidden captions by hovering over user profiles across different browser engines.
+
+**Concepts**: `hover()`, Scoped Locators, and Browser Engine Debugging.
+
+#### 🛠️ Challenges & Solutions
+* **Static vs. Dynamic Locators:** Initially, using `locator.all()` caused the test to fail because it captured a snapshot of the page before navigation was complete. Switching to `locator.nth()` allowed Playwright’s auto-waiting logic to handle the page transition properly.
+
+* **The "Firefox/Webkit" Hurdle:** Webkit struggled to "paint" the hidden caption fast enough, requiring a more assertive hover.
+
+    * **Firefox** tended to retain pointer focus on the first element, preventing subsequent hovers.
+
+    * **Solution:** I implemented `hover({ force: true })` which forced the virtual cursor to move and trigger the necessary state changes across all engines (Chromium, Firefox, and Webkit).
