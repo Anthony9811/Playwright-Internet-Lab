@@ -3,6 +3,15 @@ A modern automated testing framework built with Playwright and TypeScript, utili
 
 This project is a dedicated evolution of my previous Selenium-based automation, rebuilt from the ground up to master modern asynchronous testing patterns and Playwright's advanced tooling.
 
+# 🚀 Continuous Integration
+This project utilizes GitHub Actions to ensure code quality and cross-browser compatibility with every change.
+
+* **Automated Runs:** Tests are triggered automatically on `push` to `main` and all `pull_requests`.
+
+* **Environment:** Runs on `ubuntu-latest` using a clean Node.js environment.
+
+* **Reporting:** On failure, the Playwright HTML report and Trace files are uploaded as artifacts for remote debugging.
+
 # 🛠 Tech Stack
 * **Language**: TypeScript
 * **Framework**: Playwright Test
