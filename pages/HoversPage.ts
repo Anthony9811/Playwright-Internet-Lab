@@ -9,8 +9,8 @@ export class HoversPage extends HomePage{
   constructor(page:Page) {
     super(page);
     this.userProfiles = page.locator('.figure');
-    this.userName = page.locator("h5");
-    this.userProfileLink = page.getByText("View Profile");
+    this.userName = page.locator('h5');
+    this.userProfileLink = page.getByText('View Profile');
   }
 
   // Helper to get locators INSIDE a specific profile

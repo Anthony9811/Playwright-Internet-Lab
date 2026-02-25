@@ -93,3 +93,18 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
     * **Firefox** tended to retain pointer focus on the first element, preventing subsequent hovers.
 
     * **Solution:** I implemented `hover({ force: true })` which forced the virtual cursor to move and trigger the necessary state changes across all engines (Chromium, Firefox, and Webkit).
+
+**Exercise 5: Data-Driven Keyboard Events**
+
+**Objective:** Simulate a variety of keyboard inputs and validate that the UI correctly captures and displays the event feedback.
+
+**Concepts:** `locator.press()`, `page.keyboard`, **Data-Driven Testing**, and **Event Loop Management**.
+
+#### 🛠️ Challenges & Solutions
+* **The "Focus" Requirement:** I initially found that global keyboard commands were inconsistent in Firefox and Webkit. By explicitly using `inputField.focus()` before the press, I ensured the browser context was correctly focused, which is a requirement for hardware-level event dispatching in stricter engines.
+* **Default Browser Behaviors:** Testing the `Enter` key revealed a "race condition" where the site would attempt a form submission and refresh the page, causing the result message to disappear instantly.
+* **Data-Driven Strategy:** Instead of writing individual tests for every key, I implemented a loop to iterate through an array of keys (*Shift, Control, Escape, Backspace*). This approach increased my test coverage while keeping the codebase DRY.
+
+#### 🚀 Technical Implementation
+* **Locators:** Utilized `page.getByText(/You entered:/)` to create a resilient locator that ignores minor HTML structure changes but focuses on the content the user sees.
+* **Assertions:** Switched to `toHaveText()` to take advantage of Playwright's built-in retry logic, ensuring the test waits for the UI to update before declaring a pass/fail.
