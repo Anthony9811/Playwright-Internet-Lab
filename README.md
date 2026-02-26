@@ -108,3 +108,22 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 #### 🚀 Technical Implementation
 * **Locators:** Utilized `page.getByText(/You entered:/)` to create a resilient locator that ignores minor HTML structure changes but focuses on the content the user sees.
 * **Assertions:** Switched to `toHaveText()` to take advantage of Playwright's built-in retry logic, ensuring the test waits for the UI to update before declaring a pass/fail.
+
+**Exercise 6: Horizontal Slider & UI Synchronization**
+
+**Objective:** Navigate a slider component to a specific value (*max value of 5*) and verify the numeric output.
+
+**Concepts:** `toPass()`, **Polling Logic**, **Race Conditions**, and **Accessibility Roles**.
+
+### 🛠️ Challenges & Solutions
+
+* **The "Overshoot" Problem:** Initially, using a standard loop caused the test to "outrun" the browser. The automation would send five `ArrowRight` presses before the browser had finished rendering the first two, leading to inconsistent results (e.g., landing on 3.5 instead of 2.5).
+
+* **Syncing State without Hard Waits:** To avoid the "code smell" of `waitForTimeout`, I implemented Playwright’s `toPass()` utility.
+
+* **Solution:** I created a retry block that continually presses the arrow key and checks the current value. If the value doesn't match the target, it throws a temporary error, triggering a retry. This ensures the test moves as fast as the browser allows without ever losing synchronization.
+
+#### 🚀 Technical Implementation
+* **Locator Strategy:** Used `page.getByRole('slider')` to interact with the input and `page.locator('#range')` to read the updated text state.
+
+* **Resilience:** By setting a custom `interval` and `timeout` within `toPass`, the test is shielded from environmental lag or slow "paints" in CI environments like GitHub Actions.

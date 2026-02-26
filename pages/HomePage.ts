@@ -7,6 +7,7 @@ export class HomePage {
    private readonly forgotPasswordLink: Locator;
    private readonly hoversLink: Locator;
    private readonly keyPressesLink: Locator;
+   private readonly horizontalSliderLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +16,7 @@ export class HomePage {
     this.forgotPasswordLink = page.getByText("Forgot Password");
     this.hoversLink = page.getByText("Hovers");
     this.keyPressesLink = page.getByText("Key Presses");
+    this.horizontalSliderLink = page.getByText("Horizontal Slider");
   }
 
   async clickOnFormAuthentication() {
@@ -35,6 +37,10 @@ export class HomePage {
 
   async clickOnKeyPresses() {
     await this.keyPressesLink.click();
+  }
+
+  async clickOnHorizontalSlider() {
+    await this.horizontalSliderLink.click();
   }
 
   async open() {
