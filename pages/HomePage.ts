@@ -8,6 +8,7 @@ export class HomePage {
    private readonly hoversLink: Locator;
    private readonly keyPressesLink: Locator;
    private readonly horizontalSliderLink: Locator;
+   private readonly AlertsLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -17,6 +18,7 @@ export class HomePage {
     this.hoversLink = page.getByText("Hovers");
     this.keyPressesLink = page.getByText("Key Presses");
     this.horizontalSliderLink = page.getByText("Horizontal Slider");
+    this.AlertsLink = page.getByText("JavaScript Alerts");
   }
 
   async clickOnFormAuthentication() {
@@ -41,6 +43,10 @@ export class HomePage {
 
   async clickOnHorizontalSlider() {
     await this.horizontalSliderLink.click();
+  }
+
+  async clickOnJavascriptAlerts() {
+    await this.AlertsLink.click();
   }
 
   async open() {

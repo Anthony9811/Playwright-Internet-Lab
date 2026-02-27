@@ -56,7 +56,7 @@ The project follows a clean separation of concerns:
 While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom-practice) focused on traditional WebDriver protocols, this project explores the benefits of the Playwright library, such as its auto-waiting mechanism, shadow DOM support, and the robust Trace Viewer for faster debugging.
 
 # 🧠 Key Concepts & Exercises
-**Exercise 1: Basic Login Test (Form Authentication)**
+### **Exercise 1: Basic Login Test (Form Authentication)**
 
 **Objective**: Automate the login process for the "The Internet" sample website.
 
@@ -64,13 +64,13 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 
 **Transition Notes**: In Exercise 1, I replaced the Selenium `findElement` and `sendKeys` approach with Playwright’s `locator` and `fill`. Unlike my Selenium implementation, this version uses **Auto-waiting**, removing the need for manual `WebDriverWait` or `ExpectedConditions` for the login flash message.
 
-**Exercise 2: Data-Driven Dropdown Selection**
+### **Exercise 2: Data-Driven Dropdown Selection**
 
 **Objective**: Automate a dropdown menu to select options using a parameterized data approach.
 
 **Concepts**: `selectOption`, `expect().toHaveValue()`, and **Array-based test loops**.
 
-**Exercise 3: Forgot Password Workflow**
+### **Exercise 3: Forgot Password Workflow**
 
 **Objective**: Validate the "Forgot Password" functionality by submitting an email and verifying the resulting message.
 
@@ -79,7 +79,7 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 #### **⚠️ Note**: This test cannot be successfully completed as intended at the moment due to an "Internal Server Error" appearing on the site after submission. Following the original requirements, the application should redirect to a confirmation page displaying "Your e-mail's been sent!".
 #### In this Playwright implementation, I have also opted to validate the presence of the "Internal Server Error" message. This approach avoids a test timeout (Playwright's equivalent of a `NoSuchElementException`) and serves as a monitoring tool: the test will "fail" once the developers fix the site, alerting me to update the assertion to the correct success message.
 
-**Exercise 4: Hover Interactions**
+### **Exercise 4: Hover Interactions**
 
 **Objective**: Reveal and validate hidden captions by hovering over user profiles across different browser engines.
 
@@ -94,7 +94,7 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 
     * **Solution:** I implemented `hover({ force: true })` which forced the virtual cursor to move and trigger the necessary state changes across all engines (Chromium, Firefox, and Webkit).
 
-**Exercise 5: Data-Driven Keyboard Events**
+### **Exercise 5: Data-Driven Keyboard Events**
 
 **Objective:** Simulate a variety of keyboard inputs and validate that the UI correctly captures and displays the event feedback.
 
@@ -109,7 +109,7 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 * **Locators:** Utilized `page.getByText(/You entered:/)` to create a resilient locator that ignores minor HTML structure changes but focuses on the content the user sees.
 * **Assertions:** Switched to `toHaveText()` to take advantage of Playwright's built-in retry logic, ensuring the test waits for the UI to update before declaring a pass/fail.
 
-**Exercise 6: Horizontal Slider & UI Synchronization**
+### **Exercise 6: Horizontal Slider & UI Synchronization**
 
 **Objective:** Navigate a slider component to a specific value (*max value of 5*) and verify the numeric output.
 
@@ -127,3 +127,14 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 * **Locator Strategy:** Used `page.getByRole('slider')` to interact with the input and `page.locator('#range')` to read the updated text state.
 
 * **Resilience:** By setting a custom `interval` and `timeout` within `toPass`, the test is shielded from environmental lag or slow "paints" in CI environments like GitHub Actions.
+
+### **Exercise 7: JavaScript Alerts, Confirms, and Prompts**
+
+**Objective:** Automate native browser dialogs and verify their impact on the page state.
+
+**Concepts:** `page.on('dialog')`, `dialog.accept()`, and **Asynchronous Event Handling**.
+
+#### 🛠️ Challenges & Solutions
+
+* **The Interception Timing:** I learned that Dialogs in Playwright are handled via the Chrome DevTools Protocol (CDP). This means the listener must be set up before the trigger click.
+* **The "Invisible" Dialog Phenomenon:** I initially questioned why dialogs didn't appear in the test videos and tracer. I discovered that Playwright handles these at such a high speed that they are often resolved before the browser can even render the UI for a single frame.
