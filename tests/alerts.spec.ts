@@ -33,7 +33,7 @@ test('Should open an alert and click confirm', async ({ page }) => {
 
   await alertsPage.clickOnConfirm();
 
-  await expect(alertsPage.resultMessage).toHaveText('You clicked: OK');
+  await expect(alertsPage.resultMessage).toHaveText('You clicked: Ok');
 });
 
 
