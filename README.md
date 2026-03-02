@@ -62,7 +62,7 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 
 **Concepts**: `page.locator`, `click`, `fill`, and **Asynchronous Web-First Assertions**.
 
-**Transition Notes**: In Exercise 1, I replaced the Selenium `findElement` and `sendKeys` approach with Playwright’s `locator` and `fill`. Unlike my Selenium implementation, this version uses **Auto-waiting**, removing the need for manual `WebDriverWait` or `ExpectedConditions` for the login flash message.
+**📝Transition Notes**: In Exercise 1, I replaced the Selenium `findElement` and `send keys` approach with Playwright’s `locator` and `fill`. Unlike my Selenium implementation, this version uses **Auto-waiting**, removing the need for manual `WebDriverWait` or `ExpectedConditions` for the login flash message.
 
 ### **Exercise 2: Data-Driven Dropdown Selection**
 
@@ -138,3 +138,19 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 
 * **The Interception Timing:** I learned that Dialogs in Playwright are handled via the Chrome DevTools Protocol (CDP). This means the listener must be set up before the trigger click.
 * **The "Invisible" Dialog Phenomenon:** I initially questioned why dialogs didn't appear in the test videos and tracer. I discovered that Playwright handles these at such a high speed that they are often resolved before the browser can even render the UI for a single frame.
+
+### **Exercise 8: File Upload & Path Management**
+
+**Objective:** Automate the selection and upload of a local file and verify the website's response.
+
+**Concepts:** `setInputFiles()`, **Node.js Path Module**, and **Test Data Architecture**.
+
+#### 🛠️ Challenges & Solutions
+* **The Pathing Trap:** I initially struggled with `__dirname` failing when used inside a POM. I learned that `__dirname` is relative to the *file it is written in*. By moving the path calculation to the test spec and using `path.join(__dirname, '..', 'test-data', 'image.jpg')`, I ensured the test works regardless of which folder the terminal is running from.
+
+* **Selenium vs. Playwright:** Coming from Selenium, I was used to `sendKeys` for uploads. I found `setInputFiles()` to be significantly more reliable because it interacts directly with the browser's input element, bypassing the need to handle OS-native file picker windows which often hang automation.
+
+#### 🚀 Technical Implementation
+* **Folder Structure:** Organized the project by creating a `test-data/` folder at the root. This keeps the repository clean and ensures that anyone cloning the project has the necessary files to run the tests immediately.
+
+* **Portable Code:** Used the `path` module to ensure compatibility across different Operating Systems (Windows uses `\`, while Linux/macOS uses `/`).
