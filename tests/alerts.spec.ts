@@ -37,7 +37,7 @@ test('Should open an alert and click confirm', async ({ page }) => {
 });
 
 
-test.only('Should write on a prompt dialog and verify the result', async ({ page }) => {
+test('Should write on a prompt dialog and verify the result', async ({ page }) => {
   const homePage = new HomePage(page);
   const alertsPage = new AlertsPage(page);
   const promptInput = "Hello World";
