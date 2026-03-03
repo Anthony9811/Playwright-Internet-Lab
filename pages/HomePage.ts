@@ -12,6 +12,7 @@ export class HomePage {
    private readonly FileUploadLink: Locator;
    private readonly entryAdLink: Locator;
    private readonly contextMenuLink: Locator;
+   private readonly nestedFramesLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -25,6 +26,7 @@ export class HomePage {
     this.FileUploadLink = page.getByText("File Upload");
     this.entryAdLink = page.getByText("Entry Ad");
     this.contextMenuLink = page.getByText("Context Menu");
+    this.nestedFramesLink = page.getByText("Nested Frames");
   }
 
   async clickOnFormAuthentication() {
@@ -65,6 +67,10 @@ export class HomePage {
 
   async clickOnContextMenu() {
     await this.contextMenuLink.click();
+  }
+
+  async clickOnNestedFrames() {
+    await this.nestedFramesLink.click();
   }
 
   async open() {

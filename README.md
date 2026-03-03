@@ -178,3 +178,16 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 * **Specific Interaction:** Unlike standard clicks, the context menu on this page only triggers on a `right-click`. I utilized Playwright's `click` options to specify the mouse button, ensuring the action matched real-world user behavior.
 
 * **Combining Concepts:** This exercise required combining the locator strategies from earlier lessons with the dialog handling learned in Exercise 7. This reinforced the idea that many web interactions are "Action -> Event -> Verification" chains.
+
+### Exercise 11: Nested Frames & Deep DOM Access
+
+**Objective:** Navigate through nested `<frame>` structures to verify content in specific layout segments (Left and Bottom).
+
+**Concepts:** `frameLocator()`, **Recursive Chaining**, and **Scoped Locators**.
+
+#### 🛠️ Challenges & Solutions
+* **Assertion Scoping:** I initially encountered a TypeScript error when trying to assert text directly on a `FrameLocator`. I learned that assertions must be performed on an actual `Locator` within the frame's context.
+
+* **The Container Trap:** Learned to distinguish between the `<frameset>` layout container and the actual `<frame>` documents that hold content.
+
+* **Chain Management:** Successfully implemented a multi-level chain (`Main -> Top -> Left`) to access deeply nested data without losing execution context.
