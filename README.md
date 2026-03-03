@@ -154,3 +154,16 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 * **Folder Structure:** Organized the project by creating a `test-data/` folder at the root. This keeps the repository clean and ensures that anyone cloning the project has the necessary files to run the tests immediately.
 
 * **Portable Code:** Used the `path` module to ensure compatibility across different Operating Systems (Windows uses `\`, while Linux/macOS uses `/`).
+
+### **Exercise 9: Entry Ad Modal & State Persistence**
+
+**Objective:** Automate the dismissal of a modal dialog and verify it can be re-enabled and viewed again.
+
+**Concepts:** `toBeVisible()`, `page.context().clearCookies()`, **Modal Interception** and **Session Management**.
+
+#### 🛠️ Challenges & Solutions
+* **The Persistence Snag:** The most significant challenge was the modal not reappearing after being "re-enabled." I discovered that "The Internet" site sets a cookie upon dismissal that prevents the ad from firing again in the same session.
+
+* **Solution:** I integrated `await page.context().clearCookies()` into the test flow. This clears the site's "memory" of the previous dismissal, allowing the modal to trigger correctly for the final verification step.
+
+* **Precise Targeting:** To avoid locator ambiguity with body text, I targeted the "Close" button specifically within the `.modal-footer` container using it's class, this is not recommended by the Playwright team, but it was absolutely necessary due to the absence of a more specific locator.

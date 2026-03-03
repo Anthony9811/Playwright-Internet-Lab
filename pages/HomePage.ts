@@ -9,7 +9,8 @@ export class HomePage {
    private readonly keyPressesLink: Locator;
    private readonly horizontalSliderLink: Locator;
    private readonly AlertsLink: Locator;
-   private readonly FileUpload: Locator;
+   private readonly FileUploadLink: Locator;
+   private readonly entryAdLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -20,7 +21,8 @@ export class HomePage {
     this.keyPressesLink = page.getByText("Key Presses");
     this.horizontalSliderLink = page.getByText("Horizontal Slider");
     this.AlertsLink = page.getByText("JavaScript Alerts");
-    this.FileUpload = page.getByText("File Upload");
+    this.FileUploadLink = page.getByText("File Upload");
+    this.entryAdLink = page.getByText("Entry Ad");
   }
 
   async clickOnFormAuthentication() {
@@ -52,7 +54,11 @@ export class HomePage {
   }
 
   async clickOnFileUpload() {
-    await this.FileUpload.click();
+    await this.FileUploadLink.click();
+  }
+
+  async clickOnModal() {
+    await this.entryAdLink.click();
   }
 
   async open() {
