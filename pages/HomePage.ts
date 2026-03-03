@@ -11,6 +11,7 @@ export class HomePage {
    private readonly AlertsLink: Locator;
    private readonly FileUploadLink: Locator;
    private readonly entryAdLink: Locator;
+   private readonly contextMenuLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -23,6 +24,7 @@ export class HomePage {
     this.AlertsLink = page.getByText("JavaScript Alerts");
     this.FileUploadLink = page.getByText("File Upload");
     this.entryAdLink = page.getByText("Entry Ad");
+    this.contextMenuLink = page.getByText("Context Menu");
   }
 
   async clickOnFormAuthentication() {
@@ -59,6 +61,10 @@ export class HomePage {
 
   async clickOnModal() {
     await this.entryAdLink.click();
+  }
+
+  async clickOnContextMenu() {
+    await this.contextMenuLink.click();
   }
 
   async open() {

@@ -167,3 +167,14 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 * **Solution:** I integrated `await page.context().clearCookies()` into the test flow. This clears the site's "memory" of the previous dismissal, allowing the modal to trigger correctly for the final verification step.
 
 * **Precise Targeting:** To avoid locator ambiguity with body text, I targeted the "Close" button specifically within the `.modal-footer` container using it's class, this is not recommended by the Playwright team, but it was absolutely necessary due to the absence of a more specific locator.
+
+### Exercise 10: Context Menu & Advanced Mouse Actions
+
+**Objective:** Trigger a JavaScript alert by performing a right-click (context menu) action on a specific hot-spot.
+
+**Concepts:** `{ button: 'right' }`, **Event Interception**, and **Mouse Interaction Parameters**.
+
+#### 🛠️ Challenges & Solutions
+* **Specific Interaction:** Unlike standard clicks, the context menu on this page only triggers on a `right-click`. I utilized Playwright's `click` options to specify the mouse button, ensuring the action matched real-world user behavior.
+
+* **Combining Concepts:** This exercise required combining the locator strategies from earlier lessons with the dialog handling learned in Exercise 7. This reinforced the idea that many web interactions are "Action -> Event -> Verification" chains.
