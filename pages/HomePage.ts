@@ -14,6 +14,8 @@ export class HomePage {
    private readonly contextMenuLink: Locator;
    private readonly nestedFramesLink: Locator;
    private readonly dynamicLoadingLink: Locator;
+   private readonly infiniteScrollLink: Locator;
+   private readonly largeAndDeepDomLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -29,6 +31,8 @@ export class HomePage {
     this.contextMenuLink = page.getByText("Context Menu");
     this.nestedFramesLink = page.getByText("Nested Frames");
     this.dynamicLoadingLink = page.getByText("Dynamic Loading");
+    this.infiniteScrollLink = page.getByText("Infinite Scroll");
+    this.largeAndDeepDomLink = page.getByText("Large & Deep DOM");
   }
 
   async clickOnFormAuthentication() {
@@ -77,6 +81,14 @@ export class HomePage {
 
   async clickOnDynamicLoading() {
     await this.dynamicLoadingLink.click();
+  }
+
+  async clickOnInfiniteScroll() {
+    await this.infiniteScrollLink.click();
+  }
+
+  async clickOnLargeAndDeepDom() {
+    await this.largeAndDeepDomLink.click();
   }
 
   async open() {

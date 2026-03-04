@@ -202,3 +202,15 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 * **Handling Long Delays:** The loading bar on this page exceeds the default 5-second timeout. I resolved this by passing a custom `{ timeout: 10000 }` to the assertion, ensuring the test is robust without globally increasing timeouts.
 
 * **POM Optimization:** Instead of creating separate classes for each example, I utilized a single `DynamicLoadingPage` class with parameterized methods, reducing code duplication and improving maintainability.
+
+### Exercise 13: JavaScript Execution & Complex DOM Structures
+**Objective:** Automate interactions on JavaScript-heavy pages involving infinite scrolling and deep/large DOM layouts.
+
+**Concepts:** `page.evaluate()`, **Scroll-to-View**, and **Dynamic Element Counting**.
+
+#### 🛠️ Challenges & Solutions
+* **Node vs. Browser Context:** I learned that while Playwright is written in TypeScript, triggering a `window.scrollTo` event requires `page.evaluate()` to execute code directly within the browser's execution context.
+
+* **Handling Lazy Loading:** For the Infinite Scroll, I implemented a while loop that monitors paragraph counts. This ensures the test remains synchronized with the backend as new content is lazily injected into the DOM.
+
+* **Automatic Viewport Management:** Instead of using manual JavaScript for the Large & Deep DOM, I leveraged Playwright's `scrollIntoViewIfNeeded()`. This allows for robust interaction with elements that are physically present in the DOM but hidden behind the current scroll position.
