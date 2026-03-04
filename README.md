@@ -191,3 +191,14 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 * **The Container Trap:** Learned to distinguish between the `<frameset>` layout container and the actual `<frame>` documents that hold content.
 
 * **Chain Management:** Successfully implemented a multi-level chain (`Main -> Top -> Left`) to access deeply nested data without losing execution context.
+
+### Exercise 12: Dynamic Loading & Auto-Waiting
+**Objective:** Automate tests for elements that are either hidden via CSS or completely absent from the DOM until a trigger event.
+**Concepts:** `toBeVisible()`, **Custom Timeouts**, and **Unified POM Architecture**.
+
+#### 🛠️ Challenges & Solutions
+* **The Selenium Paradigm Shift:** In Selenium, I had to choose between `invisibilityOf()` and `visibilityOfElementLocated()` depending on whether the element was hidden or absent. In Playwright, I learned that `toBeVisible()` handles both states by waiting for the element to be both present in the DOM and visually rendered.
+
+* **Handling Long Delays:** The loading bar on this page exceeds the default 5-second timeout. I resolved this by passing a custom `{ timeout: 10000 }` to the assertion, ensuring the test is robust without globally increasing timeouts.
+
+* **POM Optimization:** Instead of creating separate classes for each example, I utilized a single `DynamicLoadingPage` class with parameterized methods, reducing code duplication and improving maintainability.

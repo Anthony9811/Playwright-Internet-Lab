@@ -13,6 +13,7 @@ export class HomePage {
    private readonly entryAdLink: Locator;
    private readonly contextMenuLink: Locator;
    private readonly nestedFramesLink: Locator;
+   private readonly dynamicLoadingLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -27,6 +28,7 @@ export class HomePage {
     this.entryAdLink = page.getByText("Entry Ad");
     this.contextMenuLink = page.getByText("Context Menu");
     this.nestedFramesLink = page.getByText("Nested Frames");
+    this.dynamicLoadingLink = page.getByText("Dynamic Loading");
   }
 
   async clickOnFormAuthentication() {
@@ -71,6 +73,10 @@ export class HomePage {
 
   async clickOnNestedFrames() {
     await this.nestedFramesLink.click();
+  }
+
+  async clickOnDynamicLoading() {
+    await this.dynamicLoadingLink.click();
   }
 
   async open() {
