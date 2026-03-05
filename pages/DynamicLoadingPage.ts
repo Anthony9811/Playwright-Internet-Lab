@@ -19,8 +19,12 @@ export class DynamicLoadingPage extends HomePage {
     await this.example1.click();
   }
 
-  async openExample2() {
+  async openExample2(isNewTab: boolean = false) {
+    if (isNewTab) {
+    await this.example2.click({ modifiers: ['Control'] });
+  } else {
     await this.example2.click();
+  }
   }
 
   async clickStart() {

@@ -236,3 +236,15 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 * **Race Condition Mitigation:** Used the `newTabPromise` pattern to ensure the automation is listening for the new window before the click occurs, preventing the test from missing the popup event.
 
 * **Refining Locators:** Beyond the exercise, I refactored the Authentication POM to use `getByRole('button')`. This makes the test more robust as it relies on the element's functional role rather than a specific CSS class like `.radius`.
+
+### Exercise 16: Dynamic Loading (New Tab)
+**Objective:** Open a new tab using click modifiers and verify elements within the new tab's DOM.
+
+**Concepts:** **Optional Parameters**, **Click Modifiers**, and **Asynchronous Page Resolution**.
+
+#### 🛠️ Challenges & Solutions
+* **Avoiding Code Duplication:** Instead of a separate `"OpenInNewTab"` function, I updated the existing `openExample2` method with a default parameter (`false`). This keeps the POM dry while supporting the specific needs of Exercise 16.
+
+* **Handling Background Tabs:** I learned that `Control + Click` is the standard automation workaround for the "Open in new tab" context menu.
+
+* **Object Scoping:** The biggest hurdle was ensuring I performed assertions on the `newTab` variable rather than the original `page` variable. This confirmed my understanding of how Playwright manages multiple browser contexts.

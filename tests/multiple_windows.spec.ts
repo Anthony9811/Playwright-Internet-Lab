@@ -13,7 +13,7 @@ test('should open a new window and validate the content', async ({ page, context
   await multipleWindowsPage.openNewWindow();
 
   const newTab = await newTabPromise;
-  const newTabContent = await newTab.locator('h3');
+  const newTabContent = newTab.locator('h3');
 
   await expect(newTab).toHaveTitle("New Window");
   await expect(newTabContent).toHaveText("New Window");

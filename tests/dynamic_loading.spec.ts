@@ -29,3 +29,20 @@ test('should wait for element to be rendered in the DOM', async ({ page }) => {
   await expect(dynamicLoadingPage.finalMessage).toBeVisible({ timeout: 10000 });
   await expect(dynamicLoadingPage.finalMessage).toHaveText("Hello World!");
 })
+
+test('should open Example 2 in a new tab', async ({ page, context }) => {
+  const homePage = new HomePage(page);
+  const dynamicLoadingPage = new DynamicLoadingPage(page);
+  const newTabPromise = context.waitForEvent('page');
+
+  await homePage.open();
+  await homePage.clickOnDynamicLoading();
+
+  await dynamicLoadingPage.openExample2(true);
+
+  const newTab = await newTabPromise;
+  await newTab.bringToFront();
+
+  const startButton = newTab.getByRole('button', { name: 'Start' });
+  await expect(startButton).toBeVisible();
+})
