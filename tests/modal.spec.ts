@@ -14,7 +14,7 @@ test('should appear a pop-up on page open', async ({ page }) => {
   await expect(modalPage.modalBody).toContainText(modalBodyText);
 })
 
-test.only('should re-enable the popup after closing it', async ({ page }) => {
+test('should re-enable the popup after closing it', async ({ page }) => {
   const homePage = new HomePage(page);
   const modalPage = new ModalPage(page);
 
