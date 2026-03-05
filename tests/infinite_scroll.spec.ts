@@ -11,9 +11,10 @@ test('should scroll to a specific paragraph', async ({ page }) => {
 
   await homePage.open();
   await homePage.clickOnInfiniteScroll();
-  
+
 
   while (paragraphCount <= paragraphNumber) {
+    await page.waitForSelector('body'); //Ensures the body is attached and ready before we try to scroll it
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     paragraphCount = await infiniteScrollPage.paragraphs.count();
   }
