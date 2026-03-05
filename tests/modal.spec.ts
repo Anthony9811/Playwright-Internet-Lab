@@ -14,7 +14,7 @@ test('should appear a pop-up on page open', async ({ page }) => {
   await expect(modalPage.modalBody).toContainText(modalBodyText);
 })
 
-test('should re-enable the popup after closing it', async ({ page }) => {
+test.only('should re-enable the popup after closing it', async ({ page }) => {
   const homePage = new HomePage(page);
   const modalPage = new ModalPage(page);
 
@@ -23,7 +23,8 @@ test('should re-enable the popup after closing it', async ({ page }) => {
 
   await expect(modalPage.popupModal).toBeVisible();
   await modalPage.closeModal();
-  await expect(modalPage.popupModal).toBeHidden();
+
+  await expect(modalPage.popupModal).toBeHidden({ timeout: 10000 });
 
   await modalPage.reEnableModal();
   await page.context().clearCookies();

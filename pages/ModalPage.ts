@@ -23,6 +23,7 @@ export class ModalPage extends HomePage {
   }
 
   async reEnableModal() {
+    await this.reEnableModalButton.waitFor({ state: 'visible' });
     this.reEnableModalButton.click();
   }
 }
