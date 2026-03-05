@@ -4,7 +4,7 @@ export class DropdownPage {
   readonly dropdown: Locator;
 
   constructor(page: Page) {
-    this.dropdown = page.locator("#dropdown");
+    this.dropdown = page.locator('#dropdown');
   }
 
   async selectOption(option: string) {

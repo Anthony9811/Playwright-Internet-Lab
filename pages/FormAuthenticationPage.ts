@@ -7,10 +7,10 @@ export class FormAuthenticationPage{
   readonly successfulLoginMessage: Locator;
 
   constructor(page: Page) {
-    this.userNameInput = page.locator("#username");
-    this.passwordInput = page.locator("#password");
-    this.loginButton = page.locator(".radius");
-    this.successfulLoginMessage = page.locator("#flash")
+    this.userNameInput = page.locator('#username');
+    this.passwordInput = page.locator('#password');
+    this.loginButton = page.getByRole('button');
+    this.successfulLoginMessage = page.locator('#flash')
   }
 
   async login(userName: string, password: string) {

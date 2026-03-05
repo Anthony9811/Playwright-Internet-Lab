@@ -5,8 +5,8 @@ export class ForgotPasswordPage{
   private readonly submitButton: Locator;
 
   constructor(page:Page) {
-    this.emailInput = page.locator("#email");
-    this.submitButton = page.locator("#form_submit");
+    this.emailInput = page.locator('#email');
+    this.submitButton = page.locator('#form_submit');
   }
 
   async typeEmail(email: string) {

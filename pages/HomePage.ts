@@ -16,6 +16,7 @@ export class HomePage {
    private readonly dynamicLoadingLink: Locator;
    private readonly infiniteScrollLink: Locator;
    private readonly largeAndDeepDomLink: Locator;
+   private readonly multipleWindowsLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -33,6 +34,7 @@ export class HomePage {
     this.dynamicLoadingLink = page.getByText("Dynamic Loading");
     this.infiniteScrollLink = page.getByText("Infinite Scroll");
     this.largeAndDeepDomLink = page.getByText("Large & Deep DOM");
+    this.multipleWindowsLink = page.getByText("Multiple Windows");
   }
 
   async clickOnFormAuthentication() {
@@ -89,6 +91,10 @@ export class HomePage {
 
   async clickOnLargeAndDeepDom() {
     await this.largeAndDeepDomLink.click();
+  }
+
+  async clickOnMultipleWindows() {
+    await this.multipleWindowsLink.click();
   }
 
   async open() {

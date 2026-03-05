@@ -225,3 +225,14 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 * **Bridge to Browser Context:** Used `.evaluate()` to modify the element's HTML properties before interaction. This demonstrated that automation tools can actively change the environment to test edge cases.
 
 * **Verifying Collections:** Instead of checking options one by one, I used `toHaveValues()`, which provides a clean, high-level way to assert the state of a multi-select list.
+
+#### Exercise 15: Multiple Windows & Tab Management
+**Objective:** Capture and interact with new browser windows triggered by page actions.
+
+**Concepts:** `waitForEvent('page')` and **Asynchronous Page Capturing**.
+### 🛠️ Challenges & Solutions
+* **The "Switching" Paradigm Shift:** In Selenium, I was used to managing window handles and manually switching focus. In Playwright, I learned to treat the new tab as its own `Page` object (`newTab`), allowing me to interact with both windows simultaneously without ever "switching back."
+
+* **Race Condition Mitigation:** Used the `newTabPromise` pattern to ensure the automation is listening for the new window before the click occurs, preventing the test from missing the popup event.
+
+* **Refining Locators:** Beyond the exercise, I refactored the Authentication POM to use `getByRole('button')`. This makes the test more robust as it relies on the element's functional role rather than a specific CSS class like `.radius`.
