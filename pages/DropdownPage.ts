@@ -1,13 +1,13 @@
 import { Page, Locator } from '@playwright/test';
 
 export class DropdownPage {
-  readonly dropdownElement: Locator;
+  readonly dropdown: Locator;
 
   constructor(page: Page) {
-    this.dropdownElement = page.locator("#dropdown");
+    this.dropdown = page.locator("#dropdown");
   }
 
-  async selectOption(option: string){ 
-    await this.dropdownElement.selectOption(option);
+  async selectOption(option: string) {
+    await this.dropdown.selectOption(option);
   }
 }

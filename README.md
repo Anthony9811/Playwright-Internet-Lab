@@ -214,3 +214,14 @@ While [my previous Selenium project](https://github.com/Anthony9811/selenium-pom
 * **Handling Lazy Loading:** For the Infinite Scroll, I implemented a while loop that monitors paragraph counts. This ensures the test remains synchronized with the backend as new content is lazily injected into the DOM.
 
 * **Automatic Viewport Management:** Instead of using manual JavaScript for the Large & Deep DOM, I leveraged Playwright's `scrollIntoViewIfNeeded()`. This allows for robust interaction with elements that are physically present in the DOM but hidden behind the current scroll position.
+
+### Exercise 14: Multi-Select via Attribute Mutation
+**Objective:** Enable multi-selection on a standard dropdown by modifying the DOM at runtime.
+**Concepts:** `locator.evaluate()`, **Attribute Injection**, and **Array-based Selection**.
+
+#### 🛠️ Challenges & Solutions
+* **The Selection Override:** I discovered that calling `selectOption()` inside a loop replaces the previous selection. I solved this by passing the entire `dropdownOptions` array into a single `selectOption()` call, which Playwright uses to populate a multi-select element correctly.
+
+* **Bridge to Browser Context:** Used `.evaluate()` to modify the element's HTML properties before interaction. This demonstrated that automation tools can actively change the environment to test edge cases.
+
+* **Verifying Collections:** Instead of checking options one by one, I used `toHaveValues()`, which provides a clean, high-level way to assert the state of a multi-select list.
